@@ -1,0 +1,13 @@
+
+
+This archive contains the distribution Ubic-Service-Plack,
+version 1.10:
+
+  Helper for running psgi applications with ubic and plackup
+
+This software is copyright (c) 2010 by Yandex LLC.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+

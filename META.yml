@@ -1,0 +1,22 @@
+---
+abstract: 'Helper for running psgi applications with ubic and plackup'
+author:
+  - 'Yury Zavarin <yury.zavarin@gmail.com>'
+  - 'Vyacheslav Matjukhin <mmcleric@yandex-team.ru>'
+build_requires:
+  LWP::Simple: 0
+  Test::More: 0
+configure_requires:
+  ExtUtils::MakeMaker: 6.31
+dynamic_config: 0
+generated_by: 'Dist::Zilla version 4.101612, CPAN::Meta::Converter version 2.101591'
+license: perl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: Ubic-Service-Plack
+requires:
+  Params::Validate: 0
+  Ubic::Daemon: 0
+  Ubic::Service::Common: 0
+version: 1.10
