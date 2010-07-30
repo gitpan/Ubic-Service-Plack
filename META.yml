@@ -17,6 +17,7 @@ meta-spec:
 name: Ubic-Service-Plack
 requires:
   Params::Validate: 0
+  Plack: 0
   Ubic::Daemon: 0
   Ubic::Service::Common: 0
-version: 1.10
+version: 1.11

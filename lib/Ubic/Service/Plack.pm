@@ -1,6 +1,6 @@
 package Ubic::Service::Plack;
 BEGIN {
-  $Ubic::Service::Plack::VERSION = '1.10';
+  $Ubic::Service::Plack::VERSION = '1.11';
 }
 
 use strict;
@@ -14,7 +14,7 @@ Ubic::Service::Plack - ubic service base class for psgi applications
 
 =head1 VERSION
 
-version 1.10
+version 1.11
 
 =head1 SYNOPSIS
 
@@ -42,6 +42,7 @@ This service is a common ubic wrap for psgi applications. It uses plackup for ru
 use base qw(Ubic::Service::Common);
 
 use Params::Validate qw(:all);
+use Plack;
 
 use Ubic::Daemon qw(:all);
 use Ubic::Service::Common;

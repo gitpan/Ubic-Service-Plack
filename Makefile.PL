@@ -24,10 +24,11 @@ my %WriteMakefileArgs = (
   'NAME' => 'Ubic::Service::Plack',
   'PREREQ_PM' => {
     'Params::Validate' => '0',
+    'Plack' => '0',
     'Ubic::Daemon' => '0',
     'Ubic::Service::Common' => '0'
   },
-  'VERSION' => '1.10',
+  'VERSION' => '1.11',
   'test' => {
     'TESTS' => 't/*.t'
   }
