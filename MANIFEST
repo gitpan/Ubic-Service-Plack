@@ -18,3 +18,7 @@ t/bin/test.psgi
 t/release-pod-coverage.t
 t/release-pod-syntax.t
 t/test.t
+tfiles/stderr.log
+tfiles/stdout.log
+tfiles/test_psgi.pid/lock
+tfiles/ubic.log

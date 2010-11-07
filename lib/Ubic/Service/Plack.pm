@@ -1,6 +1,6 @@
 package Ubic::Service::Plack;
 BEGIN {
-  $Ubic::Service::Plack::VERSION = '1.11';
+  $Ubic::Service::Plack::VERSION = '1.12';
 }
 
 use strict;
@@ -8,13 +8,103 @@ use warnings;
 
 # ABSTRACT: Helper for running psgi applications with ubic and plackup
 
+
+use base qw(Ubic::Service::Common);
+
+use Params::Validate qw(:all);
+use Plack;
+
+use Ubic::Daemon qw(:all);
+use Ubic::Service::Common;
+
+
+my $plackup_command = $ENV{'UBIC_SERVICE_PLACKUP_BIN'} || 'plackup';
+
+sub new {
+    my $class = shift;
+
+    my $params = validate(@_, {
+        server      => { type => SCALAR },
+        app         => { type => SCALAR },
+        app_name    => { type => SCALAR },
+        server_args => { type => HASHREF, default => {} },
+        user        => { type => SCALAR, optional => 1 },
+        status      => { type => CODEREF, optional => 1 },
+        port        => { type => SCALAR, regex => qr/^\d+$/, optional => 1 },
+        ubic_log    => { type => SCALAR, optional => 1 },
+        stdout      => { type => SCALAR, optional => 1 },
+        stderr      => { type => SCALAR, optional => 1 },
+        pidfile     => { type => SCALAR, optional => 1 },
+    });
+
+    my $pidfile = $params->{pidfile} || "/tmp/$params->{app_name}.pid";
+
+    my $options = {
+        start => sub {
+            my %args = (
+                $class->defaults,
+                server => $params->{server},
+                ($params->{port} ? (port => $params->{port}) : ()),
+                %{$params->{server_args}},
+            );
+            my @cmd = split(/\s+/, $plackup_command);
+            foreach my $key (keys %args) {
+                push @cmd, "--$key";
+                my $v = $args{$key};
+                push @cmd, $v if defined($v);
+            }
+            push @cmd, $params->{app};
+
+            my $daemon_opts = { bin => \@cmd, pidfile => $pidfile, term_timeout => 5 };
+            for (qw/ubic_log stdout stderr/) {
+                $daemon_opts->{$_} = $params->{$_} if $params->{$_};
+            }
+            start_daemon($daemon_opts);
+            return;
+        },
+        stop => sub {
+            return stop_daemon($pidfile, { timeout => 7 });
+        },
+        status => sub {
+            my $running = check_daemon($pidfile);
+            return 'not running' unless ($running);
+            if ($params->{status}) {
+                return $params->{status}->();
+            } else {
+                return 'running';
+            }
+        },
+        user => $params->{user} || 'root',
+        timeout_options => { start => { trials => 15, step => 0.1 }, stop => { trials => 15, step => 0.1 } },
+    };
+
+    if ($params->{port}) {
+        $options->{port} = $params->{port};
+    }
+
+    my $self = $class->SUPER::new($options);
+
+    return $self;
+}
+
+
+
+sub defaults {
+    return ();
+}
+
+
+1;
+__END__
+=pod
+
 =head1 NAME
 
-Ubic::Service::Plack - ubic service base class for psgi applications
+Ubic::Service::Plack - Helper for running psgi applications with ubic and plackup
 
 =head1 VERSION
 
-version 1.11
+version 1.12
 
 =head1 SYNOPSIS
 
@@ -30,22 +120,20 @@ version 1.11
         ubic_log => '/var/log/app/ubic.log',
         stdout   => '/var/log/app/stdout.log',
         stderr   => '/var/log/app/stderr.log',
-        user     => "ppb",
+        user     => "www-data",
     });
 
 =head1 DESCRIPTION
 
 This service is a common ubic wrap for psgi applications. It uses plackup for running these applications.
 
-=cut
+=head1 NAME
 
-use base qw(Ubic::Service::Common);
+Ubic::Service::Plack - ubic service base class for psgi applications
 
-use Params::Validate qw(:all);
-use Plack;
+=head1 VERSION
 
-use Ubic::Daemon qw(:all);
-use Ubic::Service::Common;
+version 1.12
 
 =head1 METHODS
 
@@ -109,83 +197,32 @@ If not specified, it will be derived from I<app_name>.
 
 =back
 
-=cut
+=for Pod::Coverage defaults
 
-sub new {
-    my $class = shift;
+=head1 FUTURE DIRECTIONS
 
-    my $params = validate(@_, {
-        server      => { type => SCALAR },
-        app         => { type => SCALAR },
-        app_name    => { type => SCALAR },
-        server_args => { type => HASHREF, default => {} },
-        user        => { type => SCALAR, optional => 1 },
-        status      => { type => CODEREF, optional => 1 },
-        port        => { type => SCALAR, regex => qr/^\d+$/, optional => 1 },
-        ubic_log    => { type => SCALAR, optional => 1 },
-        stdout      => { type => SCALAR, optional => 1 },
-        stderr      => { type => SCALAR, optional => 1 },
-        pidfile     => { type => SCALAR, optional => 1 },
-    });
-
-    my $pidfile = $params->{pidfile} || "/tmp/$params->{app_name}.pid";
-
-    my $options = {
-        start => sub {
-            my %args = (
-                $class->defaults,
-                server => $params->{server},
-                %{$params->{server_args}},
-            );
-            my @cmd = ("plackup");
-            foreach my $key (keys %args) {
-                push @cmd, "--$key";
-                my $v = $args{$key};
-                push @cmd, $v if defined($v);
-            }
-            push @cmd, $params->{app};
-
-            my $daemon_opts = { bin => \@cmd, pidfile => $pidfile, term_timeout => 5 };
-            for (qw/ubic_log stdout stderr/) {
-                $daemon_opts->{$_} = $params->{$_} if $params->{$_};
-            }
-            start_daemon($daemon_opts);
-            return;
-        },
-        stop => sub {
-            return stop_daemon($pidfile, { timeout => 7 });
-        },
-        status => sub {
-            my $running = check_daemon($pidfile);
-            return 'not running' unless ($running);
-            if ($params->{status}) {
-                return $params->{status}->();
-            } else {
-                return 'running';
-            }
-        },
-        user => $params->{user} || 'root',
-        timeout_options => { start => { trials => 15, step => 0.1 }, stop => { trials => 15, step => 0.1 } },
-    };
-
-    if ($params->{port}) {
-        $options->{port} = $params->{port};
-    }
-
-    my $self = $class->SUPER::new($options);
-
-    return $self;
-}
-
-sub defaults {
-    return ();
-}
+Some kind of basic HTTP/socket (depending on server type) ping in status phase would be handy.
 
 =head1 AUTHORS
 
+=over 4
+
+=item *
+
 Yury Zavarin <yury.zavarin@gmail.com>
+
+=item *
+
 Vyacheslav Matjukhin <mmcleric@yandex-team.ru>
+
+=back
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2010 by Yandex LLC.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
 =cut
 
-1;

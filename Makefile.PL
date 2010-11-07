@@ -12,6 +12,8 @@ my %WriteMakefileArgs = (
   'ABSTRACT' => 'Helper for running psgi applications with ubic and plackup',
   'AUTHOR' => 'Yury Zavarin <yury.zavarin@gmail.com>, Vyacheslav Matjukhin <mmcleric@yandex-team.ru>',
   'BUILD_REQUIRES' => {
+    'Config' => '0',
+    'File::Which' => '0',
     'LWP::Simple' => '0',
     'Test::More' => '0'
   },
@@ -28,7 +30,7 @@ my %WriteMakefileArgs = (
     'Ubic::Daemon' => '0',
     'Ubic::Service::Common' => '0'
   },
-  'VERSION' => '1.11',
+  'VERSION' => '1.12',
   'test' => {
     'TESTS' => 't/*.t'
   }

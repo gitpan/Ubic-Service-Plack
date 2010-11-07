@@ -1,0 +1,14 @@
+[Sun Nov  7 04:33:18 2010]	28806	guardian name: ubic-guardian /usr/bin/perl /usr/local/bin/plackup --server Standalone --port 5001 t/bin/test.psgi
+[Sun Nov  7 04:33:18 2010]	28806	getting lock...
+[Sun Nov  7 04:33:18 2010]	28806	got lock
+[Sun Nov  7 04:33:18 2010]	28806	guardian pid: 28806
+[Sun Nov  7 04:33:18 2010]	28806	daemon pid: 28807
+[Sun Nov  7 04:33:18 2010]	28806	sending SIGTERM to 28807
+[Sun Nov  7 04:33:18 2010]	28806	daemon exited by sigterm
+[Sun Nov  7 04:33:18 2010]	28820	guardian name: ubic-guardian /usr/bin/perl /usr/local/bin/plackup --server Standalone --port 5001 t/bin/test.psgi
+[Sun Nov  7 04:33:18 2010]	28820	getting lock...
+[Sun Nov  7 04:33:18 2010]	28820	got lock
+[Sun Nov  7 04:33:18 2010]	28820	guardian pid: 28820
+[Sun Nov  7 04:33:18 2010]	28820	daemon pid: 28821
+[Sun Nov  7 04:33:18 2010]	28820	sending SIGTERM to 28821
+[Sun Nov  7 04:33:18 2010]	28820	daemon exited by sigterm

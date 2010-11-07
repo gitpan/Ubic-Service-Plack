@@ -1,6 +1,10 @@
 Revision history for Ubic-Service-Plack
 
+1.12    Sun Nov 07, 2010
+        Pass 'port' option to plackup.
+
 1.11    Sat Jul 31, 2010
+        Add Plack into CPAN deps.
 
 1.10    Fri Jul 30, 2010
         First opensource release.
