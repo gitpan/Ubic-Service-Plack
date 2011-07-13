@@ -4,7 +4,7 @@ use warnings;
 
 
 
-use ExtUtils::MakeMaker 6.31;
+use ExtUtils::MakeMaker 6.30;
 
 
 
@@ -18,7 +18,7 @@ my %WriteMakefileArgs = (
     'Test::More' => '0'
   },
   'CONFIGURE_REQUIRES' => {
-    'ExtUtils::MakeMaker' => '6.31'
+    'ExtUtils::MakeMaker' => '6.30'
   },
   'DISTNAME' => 'Ubic-Service-Plack',
   'EXE_FILES' => [],
@@ -30,7 +30,7 @@ my %WriteMakefileArgs = (
     'Ubic::Daemon' => '0',
     'Ubic::Service::Common' => '0'
   },
-  'VERSION' => '1.12',
+  'VERSION' => '1.13',
   'test' => {
     'TESTS' => 't/*.t'
   }

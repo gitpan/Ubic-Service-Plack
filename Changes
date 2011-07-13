@@ -1,5 +1,12 @@
 Revision history for Ubic-Service-Plack
 
+1.13    Wed Jul 13, 2011
+        * Compatible with new ubic 'default user' feature
+        * Support arrayref values in server_args
+        * Support single-letter keys in server_args
+        * bin() method, pidfile() method, refactor to use
+          Ubic::Service::Skeleton instead of Ubic::Service::Common
+
 1.12    Sun Nov 07, 2010
         Pass 'port' option to plackup.
 

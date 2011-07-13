@@ -1,6 +1,6 @@
 package Ubic::Service::PSGI;
 BEGIN {
-  $Ubic::Service::PSGI::VERSION = '1.12';
+  $Ubic::Service::PSGI::VERSION = '1.13';
 }
 
 use strict;
@@ -18,6 +18,7 @@ sub defaults {
 }
 
 1;
+
 __END__
 =pod
 
@@ -27,7 +28,7 @@ Ubic::Service::PSGI
 
 =head1 VERSION
 
-version 1.12
+version 1.13
 
 =head1 DESCRIPTION
 
@@ -39,7 +40,7 @@ Ubic::Service::PSGI - deprecated module, see Ubic::Service::Plack instead
 
 =head1 VERSION
 
-version 1.12
+version 1.13
 
 =for Pod::Coverage defaults
 
@@ -59,7 +60,7 @@ Vyacheslav Matjukhin <mmcleric@yandex-team.ru>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2010 by Yandex LLC.
+This software is copyright (c) 2011 by Yandex LLC.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

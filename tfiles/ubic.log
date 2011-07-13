@@ -1,14 +1,14 @@
-[Sun Nov  7 04:33:18 2010]	28806	guardian name: ubic-guardian /usr/bin/perl /usr/local/bin/plackup --server Standalone --port 5001 t/bin/test.psgi
-[Sun Nov  7 04:33:18 2010]	28806	getting lock...
-[Sun Nov  7 04:33:18 2010]	28806	got lock
-[Sun Nov  7 04:33:18 2010]	28806	guardian pid: 28806
-[Sun Nov  7 04:33:18 2010]	28806	daemon pid: 28807
-[Sun Nov  7 04:33:18 2010]	28806	sending SIGTERM to 28807
-[Sun Nov  7 04:33:18 2010]	28806	daemon exited by sigterm
-[Sun Nov  7 04:33:18 2010]	28820	guardian name: ubic-guardian /usr/bin/perl /usr/local/bin/plackup --server Standalone --port 5001 t/bin/test.psgi
-[Sun Nov  7 04:33:18 2010]	28820	getting lock...
-[Sun Nov  7 04:33:18 2010]	28820	got lock
-[Sun Nov  7 04:33:18 2010]	28820	guardian pid: 28820
-[Sun Nov  7 04:33:18 2010]	28820	daemon pid: 28821
-[Sun Nov  7 04:33:18 2010]	28820	sending SIGTERM to 28821
-[Sun Nov  7 04:33:18 2010]	28820	daemon exited by sigterm
+[Wed Jul 13 14:27:49 2011]	54310	guardian name: ubic-guardian /usr/bin/perl /Users/mmcleric/perl5/bin/plackup --server Standalone --port 5001 t/bin/test.psgi
+[Wed Jul 13 14:27:49 2011]	54310	getting lock...
+[Wed Jul 13 14:27:49 2011]	54310	got lock
+[Wed Jul 13 14:27:49 2011]	54310	guardian pid: 54310
+[Wed Jul 13 14:27:49 2011]	54310	daemon pid: 54311
+[Wed Jul 13 14:27:50 2011]	54310	sending SIGTERM to 54311
+[Wed Jul 13 14:27:50 2011]	54310	daemon exited by sigterm
+[Wed Jul 13 14:27:50 2011]	54315	guardian name: ubic-guardian /usr/bin/perl /Users/mmcleric/perl5/bin/plackup --server Standalone --port 5001 t/bin/test.psgi
+[Wed Jul 13 14:27:50 2011]	54315	getting lock...
+[Wed Jul 13 14:27:50 2011]	54315	got lock
+[Wed Jul 13 14:27:50 2011]	54315	guardian pid: 54315
+[Wed Jul 13 14:27:50 2011]	54315	daemon pid: 54316
+[Wed Jul 13 14:27:50 2011]	54315	sending SIGTERM to 54316
+[Wed Jul 13 14:27:50 2011]	54315	daemon exited by sigterm
