@@ -4,7 +4,7 @@ use warnings;
 
 
 
-use ExtUtils::MakeMaker 6.30;
+use ExtUtils::MakeMaker 6.31;
 
 
 
@@ -13,12 +13,14 @@ my %WriteMakefileArgs = (
   'AUTHOR' => 'Yury Zavarin <yury.zavarin@gmail.com>, Vyacheslav Matjukhin <mmcleric@yandex-team.ru>',
   'BUILD_REQUIRES' => {
     'Config' => '0',
+    'Cwd' => '0',
     'File::Which' => '0',
     'LWP::Simple' => '0',
-    'Test::More' => '0'
+    'Test::More' => '0',
+    'Test::TCP' => '0'
   },
   'CONFIGURE_REQUIRES' => {
-    'ExtUtils::MakeMaker' => '6.30'
+    'ExtUtils::MakeMaker' => '6.31'
   },
   'DISTNAME' => 'Ubic-Service-Plack',
   'EXE_FILES' => [],
@@ -28,9 +30,9 @@ my %WriteMakefileArgs = (
     'Params::Validate' => '0',
     'Plack' => '0',
     'Ubic::Daemon' => '0',
-    'Ubic::Service::Common' => '0'
+    'Ubic::Service::Skeleton' => '0'
   },
-  'VERSION' => '1.13',
+  'VERSION' => '1.14',
   'test' => {
     'TESTS' => 't/*.t'
   }

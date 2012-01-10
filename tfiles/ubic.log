@@ -1,14 +1,21 @@
-[Wed Jul 13 14:27:49 2011]	54310	guardian name: ubic-guardian /usr/bin/perl /Users/mmcleric/perl5/bin/plackup --server Standalone --port 5001 t/bin/test.psgi
-[Wed Jul 13 14:27:49 2011]	54310	getting lock...
-[Wed Jul 13 14:27:49 2011]	54310	got lock
-[Wed Jul 13 14:27:49 2011]	54310	guardian pid: 54310
-[Wed Jul 13 14:27:49 2011]	54310	daemon pid: 54311
-[Wed Jul 13 14:27:50 2011]	54310	sending SIGTERM to 54311
-[Wed Jul 13 14:27:50 2011]	54310	daemon exited by sigterm
-[Wed Jul 13 14:27:50 2011]	54315	guardian name: ubic-guardian /usr/bin/perl /Users/mmcleric/perl5/bin/plackup --server Standalone --port 5001 t/bin/test.psgi
-[Wed Jul 13 14:27:50 2011]	54315	getting lock...
-[Wed Jul 13 14:27:50 2011]	54315	got lock
-[Wed Jul 13 14:27:50 2011]	54315	guardian pid: 54315
-[Wed Jul 13 14:27:50 2011]	54315	daemon pid: 54316
-[Wed Jul 13 14:27:50 2011]	54315	sending SIGTERM to 54316
-[Wed Jul 13 14:27:50 2011]	54315	daemon exited by sigterm
+[Fri Dec  9 23:19:16 2011]	14744	guardian name: ubic-guardian /usr/bin/perl /usr/local/bin/plackup --server Standalone --port 10929 t/bin/test.psgi
+[Fri Dec  9 23:19:16 2011]	14744	getting lock...
+[Fri Dec  9 23:19:16 2011]	14744	got lock
+[Fri Dec  9 23:19:16 2011]	14744	guardian pid: 14744
+[Fri Dec  9 23:19:16 2011]	14744	daemon pid: 14745
+[Fri Dec  9 23:19:16 2011]	14744	sending SIGTERM to 14745
+[Fri Dec  9 23:19:16 2011]	14744	daemon 14745 exited by sigterm
+[Fri Dec  9 23:19:16 2011]	14747	guardian name: ubic-guardian /usr/bin/perl /usr/local/bin/plackup --server Standalone --port 10929 t/bin/test.psgi
+[Fri Dec  9 23:19:16 2011]	14747	getting lock...
+[Fri Dec  9 23:19:16 2011]	14747	got lock
+[Fri Dec  9 23:19:16 2011]	14747	guardian pid: 14747
+[Fri Dec  9 23:19:16 2011]	14747	daemon pid: 14748
+[Fri Dec  9 23:19:16 2011]	14747	sending SIGTERM to 14748
+[Fri Dec  9 23:19:16 2011]	14747	daemon 14748 exited by sigterm
+[Fri Dec  9 23:19:17 2011]	14750	guardian name: ubic-guardian /usr/bin/perl /usr/local/bin/plackup --server Standalone --port 10196 /home/mmcleric/git/opensource/ubic-plack/t/bin/test.psgi
+[Fri Dec  9 23:19:17 2011]	14750	getting lock...
+[Fri Dec  9 23:19:17 2011]	14750	got lock
+[Fri Dec  9 23:19:17 2011]	14750	guardian pid: 14750
+[Fri Dec  9 23:19:17 2011]	14750	daemon pid: 14751
+[Fri Dec  9 23:19:17 2011]	14750	sending SIGTERM to 14751
+[Fri Dec  9 23:19:17 2011]	14750	daemon 14751 exited by sigterm

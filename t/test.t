@@ -5,7 +5,9 @@ use warnings;
 
 use lib 'lib';
 
-use Test::More tests => 7;
+use Test::More tests => 14;
+use Test::TCP;
+use Cwd;
 
 our ($perl, $plackup);
 BEGIN {
@@ -24,7 +26,7 @@ use LWP::Simple;
 use Ubic::Service::Plack;
 
 {
-    my $port = 5001;
+    my $port = empty_port();
 
     my $service = Ubic::Service::Plack->new({
         server => 'Standalone',
@@ -100,3 +102,89 @@ use Ubic::Service::Plack;
     });
     is($service->port, 1234, 'port from top-level port');
 }
+
+# pidfile
+{
+    my $service = Ubic::Service::Plack->new({
+        server => 'Starman',
+        app => 't/bin/test.psgi',
+    });
+    $service->name('bar');
+    $service->parent_name('foo');
+
+    is
+        $service->pidfile,
+        '/tmp/foo.bar.pid',
+        "pidfile() when neither 'pidfile' nor 'app_name' options are set";
+
+    $service = Ubic::Service::Plack->new({
+        server => 'Starman',
+        app => 't/bin/test.psgi',
+        app_name => 'blah',
+    });
+    $service->name('bar');
+    $service->parent_name('foo');
+
+    is
+        $service->pidfile,
+        '/tmp/blah.pid',
+        "pidfile() when 'app_name' option is set";
+
+    $service = Ubic::Service::Plack->new({
+        server => 'Starman',
+        app => 't/bin/test.psgi',
+        pidfile => '/var/tmp/blah.pid',
+        app_name => 'blah',
+    });
+    $service->name('bar');
+    $service->parent_name('foo');
+
+    is
+        $service->pidfile,
+        '/var/tmp/blah.pid',
+        "pidfile() when both 'pidfile' and 'app_name' options are set ('pidfile' wins)";
+}
+
+# cwd
+{
+    my $port = empty_port();
+
+    my $service = Ubic::Service::Plack->new({
+        server => 'Standalone',
+        port => $port,
+        app => getcwd().'/t/bin/test.psgi',
+        status => sub {
+            my $result = get("http://localhost:$port/ping") || '';
+            if ($result eq 'ok') {
+                return 'running';
+            }
+            else {
+                return 'broken';
+            }
+        },
+        ubic_log => 'tfiles/ubic.log',
+        stdout => 'tfiles/stdout.log',
+        stderr => 'tfiles/stderr.log',
+        user => $ENV{LOGNAME},
+        pidfile => 'tfiles/test_psgi.pid',
+        cwd => '/tmp',
+        env => { XXX => 111 },
+    });
+
+    $service->start;
+    is($service->status, 'running', 'start works');
+
+    is
+        get("http://localhost:$port/cwd"),
+        'cwd: /tmp',
+        'cwd option';
+
+    is
+        get("http://localhost:$port/env"),
+        'XXX: 111',
+        'env option';
+
+    $service->stop;
+    is($service->status, 'not running', 'stop works');
+}
+

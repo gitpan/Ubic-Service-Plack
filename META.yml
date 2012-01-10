@@ -5,13 +5,15 @@ author:
   - 'Vyacheslav Matjukhin <mmcleric@yandex-team.ru>'
 build_requires:
   Config: 0
+  Cwd: 0
   File::Which: 0
   LWP::Simple: 0
   Test::More: 0
+  Test::TCP: 0
 configure_requires:
-  ExtUtils::MakeMaker: 6.30
+  ExtUtils::MakeMaker: 6.31
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.200009, CPAN::Meta::Converter version 2.110930'
+generated_by: 'Dist::Zilla version 4.200004, CPAN::Meta::Converter version 2.102400'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -21,8 +23,8 @@ requires:
   Params::Validate: 0
   Plack: 0
   Ubic::Daemon: 0
-  Ubic::Service::Common: 0
+  Ubic::Service::Skeleton: 0
 resources:
   homepage: http://github.com/tadam/Ubic-Service-Plack
   repository: git://github.com/tadam/Ubic-Service-Plack.git
-version: 1.13
+version: 1.14

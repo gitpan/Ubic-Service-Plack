@@ -1,6 +1,6 @@
 package Ubic::Service::PSGI;
 BEGIN {
-  $Ubic::Service::PSGI::VERSION = '1.13';
+  $Ubic::Service::PSGI::VERSION = '1.14';
 }
 
 use strict;
@@ -8,6 +8,14 @@ use warnings;
 
 use base qw(Ubic::Service::Plack);
 
+# ABSTRACT: deprecated module, see Ubic::Service::Plack instead
+
+
+sub new {
+    my $class = shift;
+    warn "Ubic::Service::PSGI is deprecated, use Ubic::Service::Plack instead";
+    $class->SUPER::new(@_);
+}
 
 
 
@@ -24,23 +32,15 @@ __END__
 
 =head1 NAME
 
-Ubic::Service::PSGI
-
-=head1 VERSION
-
-version 1.13
-
-=head1 DESCRIPTION
-
-This package got renamed into L<Ubic::Service::Plack> and will be removed soon.
-
-=head1 NAME
-
 Ubic::Service::PSGI - deprecated module, see Ubic::Service::Plack instead
 
 =head1 VERSION
 
-version 1.13
+version 1.14
+
+=head1 DESCRIPTION
+
+This package got renamed into L<Ubic::Service::Plack> and will be removed soon.
 
 =for Pod::Coverage defaults
 
@@ -60,7 +60,7 @@ Vyacheslav Matjukhin <mmcleric@yandex-team.ru>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2011 by Yandex LLC.
+This software is copyright (c) 2012 by Yandex LLC.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
