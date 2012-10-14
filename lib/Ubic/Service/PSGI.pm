@@ -1,6 +1,6 @@
 package Ubic::Service::PSGI;
-BEGIN {
-  $Ubic::Service::PSGI::VERSION = '1.14';
+{
+  $Ubic::Service::PSGI::VERSION = '1.15';
 }
 
 use strict;
@@ -28,6 +28,7 @@ sub defaults {
 1;
 
 __END__
+
 =pod
 
 =head1 NAME
@@ -36,7 +37,7 @@ Ubic::Service::PSGI - deprecated module, see Ubic::Service::Plack instead
 
 =head1 VERSION
 
-version 1.14
+version 1.15
 
 =head1 DESCRIPTION
 
@@ -66,4 +67,3 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-

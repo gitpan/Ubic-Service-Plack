@@ -4,13 +4,6 @@ MANIFEST
 META.yml
 Makefile.PL
 README
-debian/changelog
-debian/compat
-debian/control
-debian/copyright
-debian/libubic-service-plack-perl.install
-debian/libubic-service-psgi-perl.install
-debian/rules
 dist.ini
 lib/Ubic/Service/PSGI.pm
 lib/Ubic/Service/Plack.pm
@@ -18,7 +11,3 @@ t/bin/test.psgi
 t/release-pod-coverage.t
 t/release-pod-syntax.t
 t/test.t
-tfiles/stderr.log
-tfiles/stdout.log
-tfiles/test_psgi.pid/lock
-tfiles/ubic.log

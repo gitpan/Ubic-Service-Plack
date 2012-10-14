@@ -4,37 +4,40 @@ use warnings;
 
 
 
-use ExtUtils::MakeMaker 6.31;
+use ExtUtils::MakeMaker 6.30;
 
 
 
 my %WriteMakefileArgs = (
-  'ABSTRACT' => 'Helper for running psgi applications with ubic and plackup',
-  'AUTHOR' => 'Yury Zavarin <yury.zavarin@gmail.com>, Vyacheslav Matjukhin <mmcleric@yandex-team.ru>',
-  'BUILD_REQUIRES' => {
-    'Config' => '0',
-    'Cwd' => '0',
-    'File::Which' => '0',
-    'LWP::Simple' => '0',
-    'Test::More' => '0',
-    'Test::TCP' => '0'
+  "ABSTRACT" => "Helper for running psgi applications with ubic and plackup",
+  "AUTHOR" => "Yury Zavarin <yury.zavarin\@gmail.com>, Vyacheslav Matjukhin <mmcleric\@yandex-team.ru>",
+  "BUILD_REQUIRES" => {
+    "Config" => 0,
+    "Cwd" => 0,
+    "File::Which" => 0,
+    "LWP::Simple" => 0,
+    "Test::More" => 0,
+    "Test::TCP" => 0
   },
-  'CONFIGURE_REQUIRES' => {
-    'ExtUtils::MakeMaker' => '6.31'
+  "CONFIGURE_REQUIRES" => {
+    "ExtUtils::MakeMaker" => "6.30"
   },
-  'DISTNAME' => 'Ubic-Service-Plack',
-  'EXE_FILES' => [],
-  'LICENSE' => 'perl',
-  'NAME' => 'Ubic::Service::Plack',
-  'PREREQ_PM' => {
-    'Params::Validate' => '0',
-    'Plack' => '0',
-    'Ubic::Daemon' => '0',
-    'Ubic::Service::Skeleton' => '0'
+  "DISTNAME" => "Ubic-Service-Plack",
+  "EXE_FILES" => [],
+  "LICENSE" => "perl",
+  "NAME" => "Ubic::Service::Plack",
+  "PREREQ_PM" => {
+    "Params::Validate" => 0,
+    "Plack" => 0,
+    "Ubic::Daemon" => 0,
+    "Ubic::Service::Skeleton" => 0,
+    "base" => 0,
+    "strict" => 0,
+    "warnings" => 0
   },
-  'VERSION' => '1.14',
-  'test' => {
-    'TESTS' => 't/*.t'
+  "VERSION" => "1.15",
+  "test" => {
+    "TESTS" => "t/*.t"
   }
 );
 

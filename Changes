@@ -1,5 +1,10 @@
 Revision history for Ubic-Service-Plack
 
+1.15    Sun Oct 14, 2012
+        * minor POD improvements
+        * don't package debian/ into CPAN distribution
+        * fix cwd test on OS X
+
 1.14    Tue Jan 10, 2012
         * group, env and cmd options
         * deprecate app_name option, derive pidfile from service's full_name
