@@ -1,6 +1,6 @@
 package Ubic::Service::Plack;
 {
-  $Ubic::Service::Plack::VERSION = '1.15';
+  $Ubic::Service::Plack::VERSION = '1.16';
 }
 
 use strict;
@@ -156,7 +156,7 @@ Ubic::Service::Plack - Helper for running psgi applications with ubic and placku
 
 =head1 VERSION
 
-version 1.15
+version 1.16
 
 =head1 SYNOPSIS
 
@@ -185,7 +185,7 @@ Ubic::Service::Plack - ubic service base class for psgi applications
 
 =head1 VERSION
 
-version 1.15
+version 1.16
 
 =head1 METHODS
 
@@ -320,7 +320,7 @@ Vyacheslav Matjukhin <mmcleric@yandex-team.ru>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2012 by Yandex LLC.
+This software is copyright (c) 2013 by Yandex LLC.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
