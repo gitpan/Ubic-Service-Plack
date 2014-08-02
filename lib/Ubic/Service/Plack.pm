@@ -1,6 +1,6 @@
 package Ubic::Service::Plack;
 {
-  $Ubic::Service::Plack::VERSION = '1.16';
+  $Ubic::Service::Plack::VERSION = '1.17';
 }
 
 use strict;
@@ -34,6 +34,7 @@ sub new {
         ubic_log    => { type => SCALAR, optional => 1 },
         stdout      => { type => SCALAR, optional => 1 },
         stderr      => { type => SCALAR, optional => 1 },
+        proxy_logs  => { type => BOOLEAN, optional => 1 },
         pidfile     => { type => SCALAR, optional => 1 },
         cwd => { type => SCALAR, optional => 1 },
         env => { type => HASHREF, optional => 1 },
@@ -86,7 +87,7 @@ sub start_impl {
         pidfile => $self->pidfile,
         term_timeout => 5, # TODO - configurable?
     };
-    for (qw/ env cwd stdout stderr ubic_log /) {
+    for (qw/ env cwd stdout stderr ubic_log /, ($Ubic::VERSION gt '1.48' ? 'proxy_logs' : ())) {
         $daemon_opts->{$_} = $self->{$_} if defined $self->{$_};
     }
     start_daemon($daemon_opts);
@@ -156,7 +157,7 @@ Ubic::Service::Plack - Helper for running psgi applications with ubic and placku
 
 =head1 VERSION
 
-version 1.16
+version 1.17
 
 =head1 SYNOPSIS
 
@@ -185,7 +186,7 @@ Ubic::Service::Plack - ubic service base class for psgi applications
 
 =head1 VERSION
 
-version 1.16
+version 1.17
 
 =head1 METHODS
 
@@ -234,6 +235,12 @@ Path to stdout log of plackup.
 =item I<stderr>
 
 Path to stderr log of plackup.
+
+=item I<proxy_logs>
+
+Boolean flag. If enabled, C<ubic-guardian> will replace daemon's stdout and
+stderr filehandles with pipes, proxy all data to the log files, and reopen
+them on C<SIGHUP>.
 
 =item I<user>
 
@@ -320,7 +327,7 @@ Vyacheslav Matjukhin <mmcleric@yandex-team.ru>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Yandex LLC.
+This software is copyright (c) 2014 by Yandex LLC.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
