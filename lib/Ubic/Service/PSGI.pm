@@ -1,6 +1,6 @@
 package Ubic::Service::PSGI;
 {
-  $Ubic::Service::PSGI::VERSION = '1.17';
+  $Ubic::Service::PSGI::VERSION = '1.18';
 }
 
 use strict;
@@ -37,7 +37,7 @@ Ubic::Service::PSGI - deprecated module, see Ubic::Service::Plack instead
 
 =head1 VERSION
 
-version 1.17
+version 1.18
 
 =head1 DESCRIPTION
 

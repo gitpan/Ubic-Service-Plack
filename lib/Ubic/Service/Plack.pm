@@ -1,6 +1,6 @@
 package Ubic::Service::Plack;
 {
-  $Ubic::Service::Plack::VERSION = '1.17';
+  $Ubic::Service::Plack::VERSION = '1.18';
 }
 
 use strict;
@@ -87,7 +87,7 @@ sub start_impl {
         pidfile => $self->pidfile,
         term_timeout => 5, # TODO - configurable?
     };
-    for (qw/ env cwd stdout stderr ubic_log /, ($Ubic::VERSION gt '1.48' ? 'proxy_logs' : ())) {
+    for (qw/ env cwd stdout stderr ubic_log /, ($Ubic::Daemon::VERSION gt '1.48' ? 'proxy_logs' : ())) {
         $daemon_opts->{$_} = $self->{$_} if defined $self->{$_};
     }
     start_daemon($daemon_opts);
@@ -157,7 +157,7 @@ Ubic::Service::Plack - Helper for running psgi applications with ubic and placku
 
 =head1 VERSION
 
-version 1.17
+version 1.18
 
 =head1 SYNOPSIS
 
@@ -186,7 +186,7 @@ Ubic::Service::Plack - ubic service base class for psgi applications
 
 =head1 VERSION
 
-version 1.17
+version 1.18
 
 =head1 METHODS
 

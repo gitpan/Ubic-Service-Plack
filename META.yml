@@ -30,4 +30,4 @@ requires:
 resources:
   homepage: http://github.com/tadam/Ubic-Service-Plack
   repository: git://github.com/tadam/Ubic-Service-Plack.git
-version: 1.17
+version: 1.18
